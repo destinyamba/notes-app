@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { SELECTED_PAGE } from "./shared/types";
 import Navbar from "./scenes/navbar/Navbar";
 import Home from "./scenes/home/Home";
+import Footer from "./scenes/footer/Footer";
 
 const App = () => {
   const [isToggled, setIsToggled] = useState(false);
@@ -25,18 +26,21 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app">
-      <Navbar
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
-        isTopOfPage={isTopOfPage}
-      />
-      <Home
-        setSelectedPage={setSelectedPage}
-        isToggled={isToggled}
-        setIsToggled={setIsToggled}
-      />
-    </div>
+    <>
+      <div className="app">
+        <Navbar
+          selectedPage={selectedPage}
+          setSelectedPage={setSelectedPage}
+          isTopOfPage={isTopOfPage}
+        />
+        <Home
+          setSelectedPage={setSelectedPage}
+          isToggled={isToggled}
+          setIsToggled={setIsToggled}
+        />
+        <Footer />
+      </div>
+    </>
   );
 };
 

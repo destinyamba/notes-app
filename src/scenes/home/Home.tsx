@@ -26,7 +26,7 @@ const Home = ({ setSelectedPage, setIsToggled, isToggled }: Props) => {
       }}
       onViewportEnter={() => setSelectedPage(SELECTED_PAGE.HOME)}
       id="home"
-      className="gap-16 py-10 md:pb-0"
+      className="gap-16 py-10 md:pb-0 pb-28"
     >
       <div className="flex justify-center mt-28 p-0 h-2/3">
         {isAboveMediumScreens ? (
