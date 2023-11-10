@@ -38,8 +38,8 @@ const App = () => {
           isToggled={isToggled}
           setIsToggled={setIsToggled}
         />
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };
