@@ -1,14 +1,18 @@
-import { SELECTED_PAGE, notes } from "@/shared/types";
-import { ListBullets, SquaresFour } from "@phosphor-icons/react";
+import { SELECTED_PAGE } from "@/shared/types";
 import SearchBar from "@/shared/SearchBar";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { motion } from "framer-motion";
+import GridView from "../layouts/GridView";
+import ListView from "../layouts/ListView";
+import ToggleView from "../layouts/ToggleView";
 
 type Props = {
   setSelectedPage: (value: SELECTED_PAGE) => void;
+  isToggled: boolean;
+  setIsToggled: (value: boolean) => void;
 };
 
-const Home = ({ setSelectedPage }: Props) => {
+const Home = ({ setSelectedPage, setIsToggled, isToggled }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1024px)");
   return (
     <motion.section
@@ -27,23 +31,31 @@ const Home = ({ setSelectedPage }: Props) => {
       <div className="flex justify-center mt-28 p-0 h-2/3">
         {isAboveMediumScreens ? (
           <>
-            <div>
-              <SearchBar />
-            </div>
-            <div className="flex gap-4 z-10 w-[63%] justify-end">
-              <div className="rounded-lg shadow-lg flex p-4 gap-4">
-                <ListBullets size={32} />
-                <SquaresFour size={32} />
+            <div className="flex w-[83%]">
+              <div className="flex w-full">
+                <SearchBar />
+              </div>
+              <div className="flex gap-4 z-10 w-1/2 justify-end">
+                <div className="rounded-lg shadow-lg flex p-4 gap-2">
+                  <button
+                    onClick={() => console.log(setIsToggled(!isToggled))}
+                    className="flex"
+                  >
+                    <ToggleView />
+                  </button>
+                </div>
               </div>
             </div>
           </>
         ) : (
           <>
             <div className="flex gap-4 z-10 w-[83%] justify-end">
-              <div className="rounded-lg shadow-lg flex p-4 gap-4">
-                <ListBullets size={32} />
-                <SquaresFour size={32} />
-              </div>
+              <button
+                onClick={() => console.log(setIsToggled(!isToggled))}
+                className="flex justify-end"
+              >
+                <ToggleView />
+              </button>
             </div>
           </>
         )}
@@ -57,17 +69,15 @@ const Home = ({ setSelectedPage }: Props) => {
       ) : null}
       {/* List or Grid of Notes */}
       <div className="flex justify-center pt-8">
-        <div className="w-[83%] grid lg:grid-cols-4 lg:gap-4 md:grid-cols-3 md:gap-6 sm:grid-cols-2 sm:gap-8 xs:grid-cols-1">
-          {notes.map((note, index) => {
-            return (
-              <div key={index} className="p-8 rounded-lg shadow-lg">
-                <p className="font-semibold text-md">{note.title}</p>
-                <p>{note.description}</p>
-              </div>
-            );
-          })}
-          <div></div>
-        </div>
+        {isToggled ? (
+          <>
+            <ListView />
+          </>
+        ) : (
+          <>
+            <GridView />
+          </>
+        )}
       </div>
     </motion.section>
   );

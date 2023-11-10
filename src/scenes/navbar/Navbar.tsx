@@ -31,7 +31,7 @@ const Navbar = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
             </div>
             {isAboveMediumScreens ? (
               <div className="w-1/4 relative uppercase font-semibold text-lg">
-                notes
+                <a href="home">notes</a>
               </div>
             ) : null}
 

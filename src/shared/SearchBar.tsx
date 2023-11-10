@@ -2,10 +2,10 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 
 const SearchBar = () => {
   return (
-    <div className="flex gap-3 p-4 rounded-lg shadow-lg">
+    <div className="flex gap-3 p-5 rounded-lg shadow-lg lg:w-1/2">
       <MagnifyingGlass size={32} />
       <input
-        className=" h-full w-full outline-none text-md pt-2 text-gray-700"
+        className=" h-full w-full pt-2 outline-none text-md text-gray-700"
         type="text"
         id="search"
         placeholder="Search notes.."

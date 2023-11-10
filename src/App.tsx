@@ -4,6 +4,8 @@ import Navbar from "./scenes/navbar/Navbar";
 import Home from "./scenes/home/Home";
 
 const App = () => {
+  const [isToggled, setIsToggled] = useState(false);
+
   const [selectedPage, setSelectedPage] = useState<SELECTED_PAGE>(
     SELECTED_PAGE.HOME
   );
@@ -29,7 +31,11 @@ const App = () => {
         setSelectedPage={setSelectedPage}
         isTopOfPage={isTopOfPage}
       />
-      <Home setSelectedPage={setSelectedPage} />
+      <Home
+        setSelectedPage={setSelectedPage}
+        isToggled={isToggled}
+        setIsToggled={setIsToggled}
+      />
     </div>
   );
 };
