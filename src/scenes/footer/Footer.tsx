@@ -10,7 +10,7 @@ const Footer = () => {
           <span className="text-sm text-gray-700 sm:text-center dark:text-gray-400">
             © 2023{" "}
             <a href="home" className="hover:underline">
-              NotesTM
+              Notes
             </a>
             . All Rights Reserved.
           </span>
